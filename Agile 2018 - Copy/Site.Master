@@ -1,0 +1,122 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Agile_2018.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" runat="server" media="screen" href="~/Content/css/Site.css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+
+
+</head>
+<body class="grey lighten-5">
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+            </Scripts>
+        </asp:ScriptManager>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <header>
+            <!-- Dropdown Structure -->
+            <ul id="nav-dropdown" class="dropdown-content">
+                <li><a href="AllProjects#">Home</a></li>
+                <li class="divider"></li>
+                <li><a href="Profile">Profile</a></li>
+                <li class="divider"></li>
+                <li><asp:LinkButton runat="server" OnClick="SignOut_Click" Text="Logout"></asp:LinkButton></li>
+            </ul>
+
+            <!-- Side Nav Structure -->
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="AllProjects#">Home</a><li>
+                <li class="divider"></li>
+                <li><a href="Profile" class="panel-heading"><i class="material-icons prefix">person</i>Profile</a></li>
+                <li class="divider"></li>
+                <li>
+                    <asp:LinkButton runat="server" OnClick="SignOut_Click" Text="Logout"></asp:LinkButton>
+                </li>
+            </ul>
+            <div class="navbar-fixed">
+                <nav class="light-green darken-3">
+                    <div class="nav-wrapper nav-margin">
+                        <a href="AllProjects#" class="brand-logo">Research Grants</a>
+                        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+                        <ul id="nav" class="right hide-on-med-and-down">
+                            <li><a href="AllProjects#">Home</a><li>
+                            <li><a class="dropdown-button" href="#!" data-activates="nav-dropdown">My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="container body-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!--<footer class="page-footer light-green darken-3" style="position: absolute; bottom: 0; padding-bottom: 10px; width: 100%; z-index: 1;">
+                <!--<div class="container">
+                    <div class="row">
+                        <!--<div class="col l6 s12">
+                            <h5 class="white-text">Footer Content</h5>
+                            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                        </div>
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="white-text">Links</h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>-->
+                <!--<div class="footer-copyright">-->
+                <!--<div class="container">
+                    <div class="row footer-name">
+                        <a class="grey-text text-lighten-4" href="#!">Agile Software Development</a>
+                        <br />
+                        <a class="grey-text text-lighten-4" href="#!">University of Dundee</a>
+                        <br />
+                        <a class="grey-text text-lighten-4">&copy; <%: DateTime.Now.Year %> Team 5</a>
+                    </div>
+                </div>
+                <!--</div>
+            </footer>-->
+        </main>
+    </form>
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
+</body>
+</html>
